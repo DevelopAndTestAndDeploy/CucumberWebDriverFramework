@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pageObject.Base_PO;
+import pageObject.Login_PO;
 
 import static driver.DriverFactory.getDriver;
 
@@ -16,29 +17,36 @@ public class Login_Steps extends Base_PO {
 
     private WebDriver driver = getDriver();
 
+    private Login_PO login_po;
+
+    public Login_Steps(Login_PO login_po) {
+        this.login_po = login_po;
+
+    }
 
     @Given("I access the webdriver university login page")
     public void i_access_the_webdriver_university_login_page() {
-        navigateTo_URL("https://webdriveruniversity.com/Login-Portal/index.html");
+        login_po.navigateToWebDriverUniversity_Login_Page();
     }
 
     @When("I enter a username {}")
     public void i_enter_the_a_username(String username) {
 
-        //driver.findElement(By.id("text")).sendKeys(username);
-        sendKeys(By.id("text"), username);
+        login_po.setUserName(username);
     }
 
 
     @And("I enter a password {}")
     public void i_enter_a_password(String password) {
-        driver.findElement(By.id("password")).sendKeys(password);
+
+        login_po.setPassword(password);
     }
 
 
     @And("I click on the login button")
     public void i_click_on_the_login_button() {
-        driver.findElement(By.id("login-button")).click();
+        login_po.clickOn_Login_Button();
+
     }
 
     @Then("I should be presented with a successful login message")
