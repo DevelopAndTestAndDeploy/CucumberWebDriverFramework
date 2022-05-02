@@ -119,6 +119,22 @@
           <target>14</target>
         </configuration>
       </plugin>
+
+      <plugin>
+
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M6</version>
+        <configuration>
+
+          <suiteXmlFiles>
+            <suiteXmlFle>src/test/java/runners/testng/testng.xml</suiteXmlFle>
+
+          </suiteXmlFiles>
+        </configuration>
+
+      </plugin>
+
     </plugins>
   </build>
 </project>
